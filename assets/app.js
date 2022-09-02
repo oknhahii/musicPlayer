@@ -94,11 +94,12 @@ const app = {
       currentSongEle.classList.toggle("active");
    },
    nextSong: function () {
-      this.currentIndex === (this.songs.length - 1) ? this.currentIndex = 0 : ++this.currentIndex;
+      this.currentIndex == (this.songs.length - 1) ? this.currentIndex = 0 : ++this.currentIndex;
       this.loadCurrentSong();
    },
    prevSong: function () {
-      this.currentIndex === 0 ? this.currentIndex = (this.songs.length - 1) : --this.currentIndex;
+      this.currentIndex == 0 ? this.currentIndex = (this.songs.length - 1) : --this.currentIndex;
+
       this.loadCurrentSong();
    },
    randomSong: function(){
@@ -255,7 +256,7 @@ const app = {
          if(songNode || event.target.closest(".option")){
             // click vao node song.
                if(songNode){
-                  _this.currentIndex = songNode.getAttribute("data-index");
+                  _this.currentIndex = Number(songNode.getAttribute("data-index"));
                   _this.loadCurrentSong();
                   audio.play();
                }
